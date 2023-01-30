@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Navbar from "../src/components/navbar/Navbar"
 import Footer from "../src/components/footer/Footer"
 import Home from "../src/components/home/Home"
@@ -16,8 +16,7 @@ import Checkout from "../src/components/checkout/Checkout"
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
+      <div>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -31,7 +30,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </BrowserRouter>
   );
 }
 
