@@ -9,21 +9,25 @@ dotenv.config()
 
 const productRouter = require("./routes/productRoute")
 const userRouter = require("./routes/userRoute")
+const uploadController = require("./controllers/uploadController")
 
-
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(cors())
 app.use(express.json())
 // app.use(cookieParser())
 
 
-app.use("/user", userRouter)
-app.use("/post", productRouter)
+app.use("/api/user", userRouter)
+app.use("/api/post", productRouter)
+app.use("/upload", uploadController)
 
 
 
 
 const connect = async () => {
   try {
+    mongoose.set('strictQuery', false)
     mongoose.connect(process.env.MONGO);
     console.log('connected to mongodb!');
   } catch (error) {
