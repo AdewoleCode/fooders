@@ -16,10 +16,9 @@ import Checkout from "../src/components/checkout/Checkout"
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
@@ -27,12 +26,12 @@ function App() {
           <Route path='/create' element={<Create />} />
           <Route path='/food/:id' element={<FoodDetails />} />
           <Route path='/foods/:id' element={<FoodCatalogue />} />
-          <Route path='/checkout' element={<Checkout/>} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/cart' element={<Cart />} />
         </Routes>
-      </BrowserRouter>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
