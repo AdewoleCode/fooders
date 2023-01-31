@@ -19,7 +19,7 @@ app.use(express.json())
 
 
 app.use("/api/user", userRouter)
-app.use("/api/post", productRouter)
+app.use("/api/product", productRouter)
 app.use("/upload", uploadController)
 
 
