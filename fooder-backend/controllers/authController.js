@@ -17,16 +17,21 @@ const register = async (req, res) => {
             throw new Error("password must be more than 6 character!")
         }
 
+        const isExistingUser = await User.findOne({ username })
+        if (isExistingUser) {
+            return res.status(400).json({msg: "username already exists. Try a new one!", status: 400})
+        }
+
 
         const isExisting = await User.findOne({ email })
         if (isExisting) {
-            throw new Error("Already such an account with this EMAIL. Try a new one!")
+            return res.status(400).json({msg: "email already exists. Try a new one!", status: 400})
         }
 
-        const existingUsername = await User.findOne({ username })
-        if (existingUsername) {
-            throw new Error("Already such an account with this USERNAME. Try a new one!")
-        }
+        // const existingUsername = await User.findOne({ username })
+        // if (existingUsername) {
+        //     throw new Error("Already such an account with this USERNAME. Try a new one!")
+        // }
 
 
         const newUser = await User.create({ username, email, password })
@@ -34,13 +39,13 @@ const register = async (req, res) => {
         const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT_SECRET, { expiresIn: '5h' })
 
         if (newUser) {
-            const { username, _id, email } = newUser
-            res.status(201).json({ username, _id, token, email })
+            const { username, _id, email, isAdmin } = newUser
+            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token })
         } else {
-            throw new Error("invalid user data!")
+            return res.status(400).json({msg: "invalid data", status: 400})
         }
     } catch (error) {
-        return res.status(500).json(error.message)
+        return res.status(500).json(error.msg)
     }
 }
 
@@ -67,8 +72,8 @@ const login = async (req, res) => {
 
 
         if (user && comparePass) {
-            const { username, _id, email } = user
-            res.status(200).json({ username, _id, email, token })
+            const { username, _id, email, isAdmin } = user
+            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token })
         } else {
             throw new Error("User credentials are wrong!")
         }

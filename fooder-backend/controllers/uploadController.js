@@ -1,3 +1,4 @@
+const uploadController = require('express').Router()
 
 const multer = require('multer')
 const {verifyToken} = require('../middleware/authMiddleware')
