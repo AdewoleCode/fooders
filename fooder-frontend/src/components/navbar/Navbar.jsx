@@ -1,26 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import classes from './Navbar.module.css'
 import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
 import { useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { logout } from '../../redux/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux/authSlice'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   // const {products} = useSelector((state) => state.cart)
-  // const dispatch = useDispatch()
-  // const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true)
     return () => (window.onscroll = null)
   }
 
-  // const handleLogout = () => {
-  //   dispatch(logout())
-  //   navigate('/login')
-  // }
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate('/login')
+  }
 
   return (
     <div className={`${classes.container} ${isScrolled && classes.scrolled}`}>
@@ -52,7 +52,7 @@ const Navbar = () => {
             <AiOutlineShoppingCart className={classes.cartIcon} />
             <div className={classes.cartQuantity}>1</div>
           </Link>
-          <button className={classes.logout}>Logout</button>
+          <button onClick={handleLogout} className={classes.logout}>Logout</button>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ const Login = () => {
         const data = await res.data
         console.log(data)
         dispatch(login(data)) // {userDetails, token}
-
+        navigate("/")
 
       } catch (err) {
         console.log(err);

@@ -8,7 +8,7 @@ import LoginSvg from '../../assets/login.svg'
 import { toast } from 'react-toastify'
 import axios from "axios"
 import {useDispatch} from 'react-redux'
-import { login } from '../../redux/authSlice'
+import { register } from '../../redux/authSlice'
 
 const SignUp = () => {
   const [values, setValues] = useState({ username: "", password: "", email: "" });
@@ -23,13 +23,13 @@ const SignUp = () => {
 
       try {
         const {username, email, password} = values
-
         const res = await axios.post("http://localhost:8000/api/user/register", {
           email, password, username
         })
         const data = await res.data
         console.log(data)
-        dispatch(login(data)) // {userDetails, token}
+        dispatch(register(data)) // {userDetails, token}
+        navigate("/")
 
       } catch (error) {
         console.log(error)
