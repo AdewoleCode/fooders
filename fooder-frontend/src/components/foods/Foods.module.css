@@ -36,8 +36,9 @@
 .food{
     text-decoration: none;
     color: inherit;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 10px;
+    border-radius: 3px;
 }
 
 .food > h4{

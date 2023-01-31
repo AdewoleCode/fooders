@@ -32,7 +32,7 @@
 
 .title{
     text-decoration: none;
-    color: rgb(13, 217, 253);
+    color: #0dd9fd;
     font-weight: bold;
     font-size: 22px;
 }
@@ -52,7 +52,7 @@
 }
 
 .listItem{
-    font-size: 20px;
+    font-size: 18px;
     color: #444;
     font-weight: 500;
     /* text-transform: uppercase; */
