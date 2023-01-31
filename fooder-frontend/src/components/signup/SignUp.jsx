@@ -1,63 +1,76 @@
 import React from 'react'
 import { useState } from 'react'
 import classes from '../login/Login.module.css'
-// import {useDispatch} from 'react-redux'
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LoginSvg from '../../assets/login.svg'
-// import { login } from '../../redux/authSlice'
+
+// import LoginSvg from '../../assets/login.svg'
+import { toast } from 'react-toastify'
+import axios from "axios"
+import {useDispatch} from 'react-redux'
+import { login } from '../../redux/authSlice'
 
 const SignUp = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
-  // const dispatch = useDispatch()
+  const [values, setValues] = useState({ username: "", password: "", email: "" });
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLogin = async(e) => {
-      e.preventDefault()
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    console.log(values);
+
+    if (validateForm()) {
 
       try {
-        const res = await fetch(`http://localhost:8000/auth/login`, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: "POST",
-          body: JSON.stringify({email, password})
-        })
+        const {username, email, password} = values
 
-        const data = await res.json()
+        const res = await axios.post("http://localhost:8000/api/user/register", {
+          email, password, username
+        })
+        const data = await res.data
         console.log(data)
-        // dispatch(login(data)) // {userInfo, token}
-        navigate("/")
-        
+        dispatch(login(data)) // {userDetails, token}
+
       } catch (error) {
-        setError(true)
-        setTimeout(() => {
-          setError(false)
-        }, 3000)
+        console.log(error)
+        toast.error(error.response.data.msg)
       }
+    }
   }
+
+  const validateForm = () => {
+    const { email, password, username } = values;
+    if (email === "" || password === "" || username === "") {
+      toast.error("Uername, Email and Password is required.");
+      return false;
+    } if (password.length < 6){
+      toast.error("password must be atleast 6 characters");
+    }
+    return true;
+  };
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
 
   return (
     <div className={classes.loginContainer}>
       <div className={classes.loginWrapper}>
         <div className={classes.loginLeftSide}>
-          <img src={LoginSvg} className={classes.leftImg}/>
+          {/* <img src={LoginSvg} className={classes.leftImg} alt="imgs" /> */}
+          <img src={LoginSvg} className={classes.leftImg} alt="imgs" />
+
         </div>
         <div className={classes.loginRightSide}>
           <h2 className={classes.title}>Register</h2>
-          <form onSubmit={handleLogin} className={classes.loginForm}>
-            <input type="text" placeholder='Username' onChange={(e) => setEmail(e.target.value)}/>
-            <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
-            <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+          <form onSubmit={(event) => handleRegister(event)}  className={classes.loginForm}>
+            <input type="text" placeholder='Username' name='username' onChange={(e) => handleChange(e)} />
+            <input type="email" placeholder='Email' name='email' onChange={(e) => handleChange(e)} />
+            <input type="password" placeholder='Password' name='password' onChange={(e) => handleChange(e)} />
             <button className={classes.submitBtn}>Register</button>
-            <p>Already have an account? <Link to="/login" style={{textDecoration: "underline"}}>Login</Link></p>
+            <p>Already have an account? <Link to="/login" style={{ textDecoration: "underline" }}>Login</Link></p>
           </form>
-          {
-            error && <div className={classes.errorMessage}>
-                 Wrong credentials! Try different ones
-            </div>
-          }
         </div>
       </div>
     </div>

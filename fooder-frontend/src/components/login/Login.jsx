@@ -1,62 +1,83 @@
 import React from 'react'
 import { useState } from 'react'
 import classes from './Login.module.css'
-// import {useDispatch} from 'react-redux'
-import {Link, useNavigate} from 'react-router-dom'
-import LoginSvg from '../../assets/login.svg'
-// import { login } from '../../redux/authSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import RegSvg from '../../assets/reg2.svg'
+
+import { toast } from 'react-toastify'
+import axios from "axios"
+import {useDispatch} from 'react-redux'
+import { login } from '../../redux/authSlice'
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
-  // const dispatch = useDispatch()
+  const [values, setValues] = useState({
+    email: "",
+    password: ""
+  });
+
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLogin = async(e) => {
-      e.preventDefault()
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    console.log(values);
+
+    if (validateForm()) {
+      console.log(values);
 
       try {
-        const res = await fetch(`http://localhost:8000/auth/login`, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: "POST",
-          body: JSON.stringify({email, password})
+        const { email, password } = values;
+        const res = await axios.post("http://localhost:8000/api/user/login", {
+          email, password
         })
-
-        const data = await res.json()
+        const data = await res.data
         console.log(data)
-        // dispatch(login(data)) // {userInfo, token}
-        navigate("/")
-        
-      } catch (error) {
-        setError(true)
-        setTimeout(() => {
-          setError(false)
-        }, 3000)
+        dispatch(login(data)) // {userDetails, token}
+
+
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response.data)
       }
+    }
   }
+
+
+  const validateForm = () => {
+    const { email, password } = values;
+    if (email === "" || password === "") {
+      toast.error("Email and Password is required.");
+      return false;
+    } if (password.length < 6) {
+      toast.error("password must be atleast 6 characters");
+      return false
+    }
+    return true;
+  };
+
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={classes.loginContainer}>
       <div className={classes.loginWrapper}>
         <div className={classes.loginLeftSide}>
-          <img src={LoginSvg} className={classes.leftImg}/>
+          <img src={RegSvg} className={classes.leftImg} alt="img" />
         </div>
         <div className={classes.loginRightSide}>
           <h2 className={classes.title}>Login</h2>
-          <form onSubmit={handleLogin} className={classes.loginForm}>
-            <input type="email" placeholder='Type email' onChange={(e) => setEmail(e.target.value)}/>
-            <input type="password" placeholder='Type password' onChange={(e) => setPassword(e.target.value)}/>
+          <form action="" onSubmit={(event) => handleLogin(event)} className={classes.loginForm}>
+            <input
+              type="email"
+              placeholder='Email'
+              name='email'
+              onChange={(e) => handleChange(e)} />
+            <input type="password" placeholder='Password' name='password' onChange={(e) => handleChange(e)} />
             <button className={classes.submitBtn}>Login</button>
-            <p>Don't have an account? <Link to="/signup" style={{textDecoration: "underline"}}>Register</Link></p>
+            <p>Don't have an account? <Link to="/signup" style={{ textDecoration: "underline" }}>Register</Link></p>
           </form>
-          {
-            error && <div className={classes.errorMessage}>
-                 Wrong credentials! Try different ones
-            </div>
-          }
         </div>
       </div>
     </div>

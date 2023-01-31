@@ -11,10 +11,13 @@ import FoodCatalogue from "../src/components/foods/Foods"
 import FoodDetails from "../src/components/foodDetails/FoodDetails"
 import Create from "../src/components/create/Create"
 import Checkout from "../src/components/checkout/Checkout"
+import { useSelector } from 'react-redux';
 
 
 
 function App() {
+
+
   return (
       <div>
         <Navbar />
