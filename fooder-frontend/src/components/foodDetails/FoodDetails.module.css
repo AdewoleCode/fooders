@@ -1,0 +1,148 @@
+.container{
+    /* height: 100%;
+    width: 100%; */
+    margin-top: 3.5rem;
+}
+
+.wrapper{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+    gap: 50px;
+    /* gap: 125px; */
+}
+
+/* left */
+.left{
+    width: 50%;
+    height: 100%;
+    border: 1px solid red;
+
+}
+
+.left > img{
+    width: 100%;
+    height: 450px;
+    /* width: 400px; */
+    object-fit: cover;
+}
+
+/* right */
+.right{
+    border: 1px solid red;
+    height: 450px;
+    padding: 15px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    /* align-items: flex-start; */
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantity > button{
+    padding: 0.3rem 0.7rem;
+    border: 1px solid #333;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.quantity > button:disabled{
+    background-color: #999;
+    color: #ede8e8;
+    cursor: not-allowed;
+}
+
+.quantity > .quantityNumber{
+    padding: 0;
+    border: none;
+    cursor: default;
+}
+
+.quantity > button:hover{
+    background-color: #e0d8d8;
+}
+
+
+
+.productDesc > p{
+    color: #555;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+.category{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category > h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.category > .categoryName{
+    padding: 0.2rem 0.8rem;
+    background-color: rgb(13, 217, 253);
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.category > .categoryName:hover{
+    border-color: rgb(13, 217, 253);
+    background-color: #fff;
+    color:  rgb(13, 217, 253);
+}
+
+.price{
+    font-size: 20px;
+    color:  rgb(13, 217, 253);
+}
+
+.price > span{
+    font-size: 18px;
+}
+
+.addToCart{
+    outline: none;
+    border: 1px solid transparent;
+    padding: 0.3rem 0.8rem;
+    /* margin-top: 2rem; */
+    background-color:  rgb(13, 217, 253);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.addToCart:hover{
+    border-color: rgb(13, 217, 253);
+    color:  rgb(13, 217, 253);
+    background-color: #fff;
+}

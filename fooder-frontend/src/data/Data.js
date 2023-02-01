@@ -25,12 +25,12 @@
 
 export const foodTypes = [
     {
-        name: 'fried rice',
+        name: 'rice',
         img: "https://www.allrecipes.com/thmb/RgUS1zTYjeGmt3qW-EX9N-5GvGQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/79543-fried-rice-restaurant-style-mfs-51-155e83b4e4444e2292707287a56ddd93.jpg",
         id: crypto.randomUUID()
     },
     {
-        name: 'chicken fried rice',
+        name: 'chicken',
         img: "https://images.themodernproper.com/billowy-turkey/production/posts/2021/Fried-Rice-12.jpeg?w=960&h=960&q=82&fm=jpg&fit=crop&dm=1631766057&s=91ecf2b6243e477083e60b3a096f1b98",
         id: crypto.randomUUID()
     },
@@ -41,6 +41,16 @@ export const foodTypes = [
     },
     {
         name: 'pasta',
+        img: "https://www.foodandwine.com/thmb/97PY4E6Wk95IYv1_8pDZvBEi0Uw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cream-tomato-rigatoni-FT-RECIPE1020-139fb3fa52574e8bb06f98e7fa3e4f1e.jpg",
+        id: crypto.randomUUID()
+    },
+    {
+        name: 'shawarma',
+        img: "https://www.foodandwine.com/thmb/97PY4E6Wk95IYv1_8pDZvBEi0Uw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cream-tomato-rigatoni-FT-RECIPE1020-139fb3fa52574e8bb06f98e7fa3e4f1e.jpg",
+        id: crypto.randomUUID()
+    },
+    {
+        name: 'fish',
         img: "https://www.foodandwine.com/thmb/97PY4E6Wk95IYv1_8pDZvBEi0Uw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cream-tomato-rigatoni-FT-RECIPE1020-139fb3fa52574e8bb06f98e7fa3e4f1e.jpg",
         id: crypto.randomUUID()
     },
