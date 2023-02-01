@@ -11,12 +11,10 @@ import FoodCatalogue from "../src/components/foodCatalog/FoodCatalog"
 import FoodDetails from "../src/components/foodDetails/FoodDetails"
 import Create from "../src/components/create/Create"
 import Checkout from "../src/components/checkout/Checkout"
-import { useSelector } from 'react-redux';
-
+// import { useSelector } from 'react-redux';
 
 
 function App() {
-
 
   return (
       <div>

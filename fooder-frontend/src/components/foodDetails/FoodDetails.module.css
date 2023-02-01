@@ -85,7 +85,7 @@
 .productDesc > p{
     color: #555;
     font-size: 17px;
-    margin-left: 5px;
+    /* margin-left: 5px; */
 }
 
 .category{

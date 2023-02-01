@@ -54,7 +54,7 @@ const FoodCatalog = () => {
                 <span className={classes.price}><span>$</span> {f?.price}</span>
               </div>
             </Link>
-          )) : <h1 className={classes.noQuantity}>No {foodEndpoint} right now</h1>}
+          )) : <h1 className={classes.noQuantity}>loading list of {foodEndpoint}, please wait...</h1>}
         </div>
       </div>
     </div>

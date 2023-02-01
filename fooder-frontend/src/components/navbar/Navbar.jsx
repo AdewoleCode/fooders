@@ -8,7 +8,7 @@ import { logout } from '../../redux/authSlice'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
-  // const {products} = useSelector((state) => state.cart)
+  const {products} = useSelector((state) => state.cart)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -50,7 +50,7 @@ const Navbar = () => {
           <AiOutlineUser className={classes.userIcon} />
           <Link to='/cart' className={classes.cartContainer}>
             <AiOutlineShoppingCart className={classes.cartIcon} />
-            <div className={classes.cartQuantity}>1</div>
+            <div className={classes.cartQuantity}>{products.length}</div>
           </Link>
           <button onClick={handleLogout} className={classes.logout}>Logout</button>
         </div>

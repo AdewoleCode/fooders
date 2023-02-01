@@ -6,7 +6,9 @@ import {useParams} from 'react-router-dom'
 import { useEffect } from 'react'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import axios from 'axios'
-// import { addProduct } from '../../redux/cartSlice'
+import { addProduct } from '../../redux/cartSlice'
+import { toast } from 'react-toastify'
+
 
 const FoodDetails = () => {
   const [foodDetails, setFoodsDetails] = useState('')
@@ -14,8 +16,8 @@ const FoodDetails = () => {
   const dispatch = useDispatch()
   const {id} = useParams()
   const {token} = useSelector((state) => state.auth)
-  // const {products} = useSelector((state) => state.cart)
-  // console.log(products)
+  const {products} = useSelector((state) => state.cart)
+  console.log(products)
 
   useEffect(() => {
     const config = {
@@ -36,15 +38,20 @@ const FoodDetails = () => {
 
   const changeQuantity = (command) => {
     if(command === 'dec'){
-       if(quantity === 1) return
+       if(quantity === 1){
+        return
+       } 
        setQuantity(prev => prev - 1)
     } else if(command === 'inc'){
        setQuantity(prev => prev + 1)
     }
   }
 
+  console.log(quantity);
+
   const addToCart = () => {
-    // dispatch(addProduct({...foodDetails, quantity}))
+    dispatch(addProduct({...foodDetails, quantity}))
+    toast.success("item added to cart")
   }
 
   return (
