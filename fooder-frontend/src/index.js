@@ -6,14 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-import { store, persistor } from './redux/store';
+import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
       <BrowserRouter>
         <ToastContainer
           position='bottom-right'
@@ -25,7 +23,6 @@ root.render(
         />
         <App />
       </BrowserRouter>
-    </PersistGate>
   </Provider>
 
 );

@@ -7,8 +7,8 @@ const {verifyToken, verifyTokenAdmin} = require("../middleware/authMiddleware")
 const { getAllProducts, getSingleProduct, createProduct } = require('../controllers/productController')
 
 
-productRouter.get("/", verifyToken, getAllProducts );
-productRouter.get("/:id", verifyToken, getSingleProduct);
+productRouter.get("/", getAllProducts );
+productRouter.get("/:id", getSingleProduct);
 productRouter.post("/",verifyTokenAdmin, createProduct);
 // productRouter.put("/products/:id", updateSingleProduct);
 // productRouter.delete("/products/:id", deleteSingleProduct);

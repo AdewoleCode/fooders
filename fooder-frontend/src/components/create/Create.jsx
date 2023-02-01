@@ -20,10 +20,6 @@ const Create = () => {
   const { token } = useSelector((state) => state.auth)
 
 
-  // type="file", e.target.files[0]
-  // const onChangeFile = (e) => {
-  //   setImage(e.target.files[0])
-  // }
 
   const handleCloseImg = () => {
     setImage('')
@@ -32,35 +28,17 @@ const Create = () => {
   const handleCreateProduct = async (e) => {
     e.preventDefault()
 
-    if (!title || title === ""
-      || !desc || desc === ""
-      || !image || image === ""
-      || !price || price === ""
-      || category || category === ""
-      || !review || review === "") {
+    if (title === ""
+      || desc === ""
+      || image === ""
+      || price === ""
+      || category === ""
+      || review === "") {
       toast.error("please fill out the form")
       return
     }
 
     try {
-      // const formData = new FormData()
-      // let filename = null
-
-      // if (image) {
-      //   filename = Date.now() + image.name
-      //   formData.append("filename", filename)
-      //   formData.append("image", image)
-
-      //   await fetch(`http://localhost:5000/upload/image`, {
-      //     headers: {
-      //       "Authorization": `Bearer ${token}`
-      //     },
-      //     method: "POST",
-      //     body: formData
-      //   })
-      // }
-
-      // uploading product 
       const res = await fetch(`http://localhost:8000/api/product`, {
         headers: {
           'Content-Type': 'application/json',

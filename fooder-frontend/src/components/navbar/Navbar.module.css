@@ -42,6 +42,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .list{
@@ -75,6 +76,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    align-items: center;
 }
 
 .cartContainer{
@@ -107,9 +109,12 @@
 
 .logout{
     outline: none;
-    border: none;
+    border: 1px solid rgb(13, 217, 253);
+    border-radius: 3px;
+    padding: 2.5px 10px;
     background-color: transparent;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 1rem;
     cursor: pointer;
+    
 }

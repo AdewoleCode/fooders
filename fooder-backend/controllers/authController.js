@@ -36,11 +36,11 @@ const register = async (req, res) => {
 
         const newUser = await User.create({ username, email, password })
 
-        const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT_SECRET, { expiresIn: '5h' })
+        const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT_SECRET)
 
         if (newUser) {
             const { username, _id, email, isAdmin } = newUser
-            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token })
+            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token, isAdmin })
         } else {
             return res.status(400).json({msg: "invalid data", status: 400})
         }
@@ -68,12 +68,12 @@ const login = async (req, res) => {
             throw new Error("User credentials are wrong!")
         }
 
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '5h' })
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET)
 
 
         if (user && comparePass) {
             const { username, _id, email, isAdmin } = user
-            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token })
+            res.status(200).json({userDetails: {username, _id, email, isAdmin}, token, isAdmin })
         } else {
             throw new Error("User credentials are wrong!")
         }

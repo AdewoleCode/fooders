@@ -29,6 +29,7 @@ const SignUp = () => {
         const data = await res.data
         console.log(data)
         dispatch(register(data)) // {userDetails, token}
+        localStorage.setItem('user', JSON.stringify(data))
         navigate("/")
 
       } catch (error) {
