@@ -9,17 +9,16 @@
     height: 100%;
     width: 85%;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     padding: 15px;
-    /* border: 1px solid red; */
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .left{
-    width: 60%;
+    width: 650px;
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
 }
 
 .product{
@@ -71,11 +70,10 @@
 }
 
 .right{
-    flex: 30%;
+    width: 350px;
     /* border: 1px solid red; */
     padding: 1rem;
     height: 200px;
-    width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;

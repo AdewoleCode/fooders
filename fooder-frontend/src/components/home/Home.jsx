@@ -20,7 +20,7 @@ const Home = () => {
           <div className={classes.deliveryInfos}>
             <div className={classes.deliveryInfo}>
               <div className={classes.imgbox}>
-              <img src={illustration2} alt="" />
+                <img src={illustration2} alt="" />
 
 
               </div>
@@ -28,14 +28,13 @@ const Home = () => {
             </div>
             <div className={classes.deliveryInfo}>
               <div className={classes.imgbox}>
-              <img src={illustration1} alt="" />
-
+                <img src={illustration1} alt="" />
               </div>
               <h3>payment on delivery</h3>
             </div>
             <div className={classes.deliveryInfo}>
               <div className={classes.imgbox}>
-                <img src={illustration3} alt=""/>
+                <img src={illustration3} alt="" />
 
               </div>
               <h3>fast and affordable</h3>

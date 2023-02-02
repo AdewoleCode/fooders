@@ -5,7 +5,7 @@ import manEating from '../../assets/eating-home.svg'
 
 const Hero = () => {
     return (
-        <section style={{ height: '100vh' }} id="home" className={classes.container}>
+        <section style={{ }} id="home" className={classes.container}>
             <div className={classes.wrapper}>
                 <div className={classes.left}>
                 {/* <p className={classes.second}>Get <span>delicious</span> , <span>sizzling hot</span> food!!!</p> */}

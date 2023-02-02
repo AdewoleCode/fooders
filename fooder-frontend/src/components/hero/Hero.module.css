@@ -1,9 +1,9 @@
 .container {
-    height: calc(100vh - 60px);
+    min-height: calc(120vh - 60px);
     width: 100%;
-    margin-top: 5.5rem;
+    margin-top: 3.5rem;
     margin-bottom: -5.5rem;
-    height: 50vh;
+    /* height: 50vh; */
     /* border: 1px solid blue; */
 }
 
@@ -14,6 +14,7 @@
     justify-content: center;
     gap: 6%;
 }
+
 
 
 .buttons {
@@ -96,4 +97,40 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+
+@media screen and (max-width: 850px) {
+    .wrapper {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .left {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    .right {
+        padding-bottom: 10px;
+        width: 88%;
+        margin: 0 auto;
+    }
+    .manEatingImg {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+
+    .buttons>button {
+        padding: 0.3rem 0.7rem;
+        font-size: 18px;
+    }
+    
 }

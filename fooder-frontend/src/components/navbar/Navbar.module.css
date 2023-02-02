@@ -6,7 +6,8 @@
     top: 0;
     left: 0;
     background-color: #fff;
-    z-index: 99999; 
+    z-index: 99; 
+    position: relative;
 }
 /* 5 9s */
 
@@ -27,7 +28,7 @@
 
 /* left */
 .left{
-    flex: 1;
+    /* flex: 1; */
 }
 
 .title{
@@ -39,10 +40,11 @@
 
 /* center */
 .center{
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid red;
 }
 
 .list{
@@ -72,7 +74,7 @@
 
 /* right */
 .right{
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
@@ -116,5 +118,62 @@
     font-size: 16px;
     margin-left: 1rem;
     cursor: pointer;
+    
+}
+
+.four {
+    display: none;
+    border: 1px solid red;
+}
+
+
+@media screen and (max-width: 850px) {
+    .four {
+        display: block;
+        border: 1px solid red;
+    }
+
+    .list{
+        display: none;
+        align-items: center;
+        list-style: none;
+        gap: 30px;
+    }
+
+    .show{
+        display: flex;
+    }
+    
+    /* .center{
+        flex-direction: column;
+        width: 50%;
+        height: 100vh;
+        align-self: flex-start;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgb(13, 217, 253);
+        color: black;
+
+    } */
+
+    /* .center.active {
+        display: none;
+
+    } */
+/* 
+    .list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    } */
+
+    .listItem{
+        font-size: 22px;
+        color: #444;
+        font-weight: 600;
+    }
     
 }
