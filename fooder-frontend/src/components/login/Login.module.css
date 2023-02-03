@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 5rem;
     min-height: 70vh;
 
     /* width: 100vw; */
@@ -15,7 +15,7 @@
 /* 6 9s */
 
 .loginWrapper{
-    padding: 30px 30px;
+    padding: 50px 30px;
     border-radius: 4px;
     height: 100%;
     width: 60%;

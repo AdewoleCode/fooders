@@ -1,88 +1,93 @@
-import React, {useRef} from 'react'
+import { useRef } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
-import classes from './Navbar.module.css'
 import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
-import { HiMenu } from 'react-icons/hi'
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/authSlice'
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { products } = useSelector((state) => state.cart)
-  const { user } = useSelector(state => state.auth)
-  const { isAdmin } = useSelector(state => state.auth)
-  const menuRef = useRef(null)
 
-  const dispatch = useDispatch()
+
+
+import "../navbar/Navbarr.css"
+
+function Navbar() {
+  const navRef = useRef();
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { products } = useSelector((state) => state.cart)
+  const { isAdmin } = useSelector(state => state.auth)
+    const { user } = useSelector(state => state.auth)
 
-  window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true)
-    return () => (window.onscroll = null)
 
-  }
 
+
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
 
   const handleLogout = () => {
     dispatch(logout())
     navigate('/login')
   }
 
-  const menuToggle = () => menuRef.current.classList.add('list')
 
   return (
-    <div className={`${classes.container} ${isScrolled && classes.scrolled}`} onClick={menuToggle}>
-      <div className={classes.wrapper}>
-        <div className={classes.left}>
-          <Link to='/' className={classes.title}>
+    <div className="nav_container">
+
+      <header>
+        <h3>
+          <Link to='/' className="nav_title">
             FOODER
           </Link>
-        </div>
-        <div className={classes.center} >
-          <ul className={classes.list} ref={menuRef}>
-            <li className={classes.listItem}>
-              <Link to="/">Home</Link>
-            </li>
-            <li className={classes.listItem}>
-              <Link to="/contacts">About</Link>
-            </li>
-            <li className={classes.listItem}>
-              <Link to="/foods">Dishes</Link>
-            </li>
-            {
-              isAdmin ? (
-                <li className={classes.listItem}>
-                  <Link to='/create'>Create</Link>
-                </li>
 
-              ) : null
-            }
+        </h3>
+        <nav ref={navRef}>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          {
+            isAdmin ? (
+              <li className="nav_listItem">
+                <Link to='/create'>Create</Link>
+              </li>
 
-          </ul>
-        </div>
-        <div className={classes.right}>
-          <AiOutlineUser className={classes.userIcon} />
-          <Link to='/cart' className={classes.cartContainer}>
-            <AiOutlineShoppingCart className={classes.cartIcon} />
-            <div className={classes.cartQuantity}>{products.length}</div>
+            ) : null
+          }
+          <Link to='/foods'>dishes</Link>
+          <button
+            className="nav-btn nav-close-btn"
+            onClick={showNavbar}>
+            <FaTimes />
+          </button>
+        </nav>
+        <div className="icon">
+          {/* <AiOutlineUser className="nav_userIcon" /> */}
+          <Link to='/cart' className="nav_cartContainer">
+            <AiOutlineShoppingCart className="nav_cartIcon" />
+            <div className="nav_cartQuantity">{products.length}</div>
           </Link>
+
           {
             user ? (
-              <button onClick={handleLogout} className={classes.logout}>Logout</button>
+              <button onClick={handleLogout} className="nav_logout">Logout</button>
 
             ) : (
-              <button onClick={handleLogout} className={classes.logout}><Link to="/login" style={{ textDecoration: "none" }}>Login</Link></button>
+              <button onClick={handleLogout} className="nav_logout"><Link to="/login" style={{ textDecoration: "none" }}>Login</Link></button>
 
             )
           }
+
+
         </div>
-        <div className={classes.four} onClick={menuToggle}>
-          <HiMenu />
-        </div>
-      </div>
+        <button className="nav-btn" onClick={showNavbar}>
+          <FaBars />
+        </button>
+
+
+      </header>
     </div>
-  )
+
+  );
 }
 
-export default Navbar
+export default Navbar;
