@@ -16,8 +16,6 @@ const FoodDetails = () => {
   const dispatch = useDispatch()
   const {id} = useParams()
   const {token} = useSelector((state) => state.auth)
-  const {products} = useSelector((state) => state.cart)
-  console.log(products)
 
   useEffect(() => {
     const config = {
@@ -26,11 +24,9 @@ const FoodDetails = () => {
       }
     };
 
-    console.log(id)
      const fetchFoodDetails = async() => {
       const res = await axios.get(`http://localhost:8000/api/product/${id}`, config)
       const data = await res.data
-      console.log(data);
       setFoodsDetails(data)
      }
      fetchFoodDetails()
@@ -47,8 +43,6 @@ const FoodDetails = () => {
     }
   }
 
-  console.log(quantity);
-
   const addToCart = () => {
     dispatch(addProduct({...foodDetails, quantity}))
     toast.success("item added to cart")
@@ -58,7 +52,7 @@ const FoodDetails = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <img src={foodDetails.image} alt="image-food"/>
+          <img src={foodDetails.image} alt=""/>
         </div>
         <div className={classes.right}>
           <h2 className={classes.title}>{foodDetails?.title}</h2>

@@ -1,12 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import "./AllFood.css"
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import axios from "axios"
-import { Link, useLocation } from 'react-router-dom'
-import { addProduct } from '../../redux/cartSlice'
-import { toast } from 'react-toastify'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 
 
@@ -44,9 +41,9 @@ const AllFood = () => {
 
                         {foodList.length !== 0 ? foodList?.map((f) => (
                             <>
-                                <Link style={{textDecoration: "none"}} to={`/food/${f._id}`} key={f._id}>
+                                <Link style={{textDecoration: "none"}} to={`/food/${f._id}`} key={f._id} className="food_item">
                                     <div className='foodList-img'>
-                                        <img src={f?.image} alt="image" />
+                                        <img src={f?.image} alt="" />
                                     </div>
                                     <div className='price-listt'>
                                         <h4>{f?.title}</h4>

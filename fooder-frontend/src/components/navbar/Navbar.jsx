@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
-import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/authSlice'
 
@@ -16,9 +16,7 @@ function Navbar() {
   const dispatch = useDispatch()
   const { products } = useSelector((state) => state.cart)
   const { isAdmin } = useSelector(state => state.auth)
-    const { user } = useSelector(state => state.auth)
-
-
+  const { user } = useSelector(state => state.auth)
 
 
 
@@ -28,7 +26,7 @@ function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout())
-    navigate('/login')
+    navigate('/')
   }
 
 
@@ -66,27 +64,21 @@ function Navbar() {
             <AiOutlineShoppingCart className="nav_cartIcon" />
             <div className="nav_cartQuantity">{products.length}</div>
           </Link>
-
           {
             user ? (
               <button onClick={handleLogout} className="nav_logout">Logout</button>
 
             ) : (
-              <button onClick={handleLogout} className="nav_logout"><Link to="/login" style={{ textDecoration: "none" }}>Login</Link></button>
+              <button className="nav_logout"><Link to="/login" style={{ textDecoration: "none" }}>Login</Link></button>
 
             )
           }
-
-
         </div>
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars />
         </button>
-
-
       </header>
     </div>
-
   );
 }
 

@@ -46,12 +46,12 @@ export const foodTypes = [
     },
     {
         name: 'shawarma',
-        img: "https://www.foodandwine.com/thmb/97PY4E6Wk95IYv1_8pDZvBEi0Uw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cream-tomato-rigatoni-FT-RECIPE1020-139fb3fa52574e8bb06f98e7fa3e4f1e.jpg",
+        img: "https://ministryofcurry.com/wp-content/uploads/2021/05/chicken-shawarma-6.jpg",
         id: crypto.randomUUID()
     },
     {
         name: 'fish',
-        img: "https://www.foodandwine.com/thmb/97PY4E6Wk95IYv1_8pDZvBEi0Uw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cream-tomato-rigatoni-FT-RECIPE1020-139fb3fa52574e8bb06f98e7fa3e4f1e.jpg",
+        img: "https://netstorage-legit.akamaized.net/images/vllkyt7an08gk2477.jpg?imwidth=900",
         id: crypto.randomUUID()
     },
 ]

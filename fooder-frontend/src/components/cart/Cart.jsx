@@ -15,17 +15,11 @@ const Cart = () => {
 
   let totalPrice = 0
   products.map((product) => totalPrice += Number((product.quantity * product.price)))
-  console.log(totalPrice);
-  console.log(products);
   const handleRemoveProduct = (id) => {
-    console.log(id)
     dispatch(removeProduct({ _id: id }))
   }
 
-  const emptyCart = () => {
-    dispatch(emptyCart)
-  }
-
+ 
   const handleOrder = () => {
     if (products.length < 0) {
       toast.success("you do not have anything in the cart, do ome shopping!")
@@ -51,7 +45,7 @@ const Cart = () => {
           {products.length > 0 ? products.map((product) => (
             <div key={product._id} className={classes.product}>
               <div onClick={() => handleRemoveProduct(product._id)} className={classes.closeBtn}><AiOutlineClose /></div>
-              <img src={product.image} className={classes.img} />
+              <img src={product.image} className={classes.img} alt=""/>
               <div className={classes.productData}>
                 <h3 className={classes.title}>{product.title}</h3>
                 <div className={classes.productAndQuantity}>

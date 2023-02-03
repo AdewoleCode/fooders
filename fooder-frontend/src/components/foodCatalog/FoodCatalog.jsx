@@ -12,9 +12,6 @@ const FoodCatalog = () => {
   const foodEndpoint = location.pathname.split('/')[2]
   const { token } = useSelector((state) => state.auth)
 
-  console.log(location);
-  console.log(token)
-
   useEffect(() => {
     const config = {
       headers: {
@@ -24,13 +21,6 @@ const FoodCatalog = () => {
 
     const fetchFoodType = async () => {
       const res = await axios.get(`http://localhost:8000/api/product?category=${foodEndpoint}`, config)
-
-      // const res = await fetch(`http://localhost:8000/api/product?category=${foodEndpoint}`, {
-      //   headers: {
-      //     "Authorization": `Bearer ${token}`
-      //   }
-      // })
-      console.log(res.data);
 
       const data = await res.data
       setFilteredFoods(data)
@@ -47,7 +37,7 @@ const FoodCatalog = () => {
           {filteredFoods.length !== 0 ? filteredFoods?.map((f) => (
             <Link to={`/food/${f._id}`} key={f._id} className={classes.food}>
               <div className={classes.imgContainer}>
-                <img src={f?.image} className={classes.foodImg} />
+                <img src={f?.image} className={classes.foodImg} alt=""/>
               </div>
               <div className={classes.foodDetails}>
                 <h4 className={classes.foodTitle}>{f?.title}</h4>
