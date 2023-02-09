@@ -39,7 +39,7 @@ const Create = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/api/product`, {
+      const res = await fetch(`https://fooder-backend.onrender.com/api/product`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

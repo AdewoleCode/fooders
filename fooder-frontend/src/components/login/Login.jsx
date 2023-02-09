@@ -27,7 +27,7 @@ const Login = () => {
 
       try {
         const { email, password } = values;
-        const res = await axios.post("http://localhost:8000/api/user/login", {
+        const res = await axios.post("https://fooder-backend.onrender.com/api/user/login", {
           email, password
         })
         const data = await res.data

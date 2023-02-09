@@ -20,7 +20,7 @@ const FoodCatalog = () => {
     };
 
     const fetchFoodType = async () => {
-      const res = await axios.get(`http://localhost:8000/api/product?category=${foodEndpoint}`, config)
+      const res = await axios.get(`https://fooder-backend.onrender.com/api/product?category=${foodEndpoint}`, config)
 
       const data = await res.data
       setFilteredFoods(data)
