@@ -25,7 +25,7 @@ const FoodDetails = () => {
     };
 
      const fetchFoodDetails = async() => {
-      const res = await axios.get(`http://localhost:8000/api/product/${id}`, config)
+      const res = await axios.get(`https://fooder-backend.onrender.com/api/product/${id}`, config)
       const data = await res.data
       setFoodsDetails(data)
      }
