@@ -34,7 +34,7 @@ const AllFood = () => {
 
     return (
         <div className='all-food'>
-            <h2>Some of our fearured dishes</h2>
+            <h2>Some of our featured dishes</h2>
             <div>
                 <div>
                     <div className='food-list'>
