@@ -1,8 +1,6 @@
-console.log("hello backend fooders");
 const express = require("express") ;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-// import cookieParser from "cookie-parser";
 const cors = require("cors")
 const app = express();
 dotenv.config()
@@ -15,13 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
 app.use(express.json())
-// app.use(cookieParser())
 
 
 app.use("/api/user", userRouter)
 app.use("/api/product", productRouter)
 app.use("/upload", uploadController)
-
 
 
 
