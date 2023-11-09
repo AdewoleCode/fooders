@@ -4,6 +4,7 @@ import "./AllFood.css"
 import { useSelector } from 'react-redux'
 import axios from "axios"
 import { Link } from 'react-router-dom'
+import Spinner from "../spinner/Spinner" 
 
 
 
@@ -51,7 +52,7 @@ const AllFood = () => {
                                     </div>
                                 </Link>
                             </>
-                        )) : <h1 >loading, please wait...</h1>}
+                        )) :<Spinner />}
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import classes from './FoodCatalog.module.css'
 import { useEffect } from 'react'
 import axios from "axios"
+import Spinner from '../spinner/Spinner'
 
 const FoodCatalog = () => {
   const [filteredFoods, setFilteredFoods] = useState([])
@@ -37,14 +38,18 @@ const FoodCatalog = () => {
           {filteredFoods.length !== 0 ? filteredFoods?.map((f) => (
             <Link to={`/food/${f._id}`} key={f._id} className={classes.food}>
               <div className={classes.imgContainer}>
-                <img src={f?.image} className={classes.foodImg} alt=""/>
+                <img src={f?.image} className={classes.foodImg} alt="" />
               </div>
               <div className={classes.foodDetails}>
                 <h4 className={classes.foodTitle}>{f?.title}</h4>
                 <span className={classes.price}><span>$</span> {f?.price}</span>
               </div>
             </Link>
-          )) : <h1 className={classes.noQuantity}>loading list of {foodEndpoint}, please wait...</h1>}
+          )) :
+            <div className={classes.noQuantity}>
+              <p>loading list of {foodEndpoint}, please wait...</p>
+              <Spinner />
+            </div>}
         </div>
       </div>
     </div>
